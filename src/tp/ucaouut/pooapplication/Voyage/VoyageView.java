@@ -9,5 +9,7 @@ package tp.ucaouut.pooapplication.Voyage;
  * @author USER
  */
 public class VoyageView {
+    private String nom;
     
 }
+
