@@ -39,12 +39,11 @@ public class VoyageDAO extends DAO<Voyage> {
               return false;
     }
 
-    @Override
-    public boolean delete(Voyage obj) {
+    public boolean delete(Long id) throws SQLException  {
         try {
             String sql = "DELETE FROM voyage  WHERE num_voyage = ?";
             PreparedStatement pstmt = this.connect.prepareStatement(sql);
-            pstmt.setLong(1, obj.getNum_Voyage());
+            pstmt.setLong(1, id);
             pstmt.executeUpdate();
           //  conn.Close();
             return true;
@@ -52,15 +51,16 @@ public class VoyageDAO extends DAO<Voyage> {
         return false;
     }
 
-    @Override
-    public boolean update(Voyage obj) {
+   
+    public boolean updated(Voyage obj) throws SQLException   {
         try {
-            String sql = "UPDATE  Voyage SET  date_debut = ?,date_fin = ?,lieu_depart = ? ,lieu_arrive= ? VALUES (?, ?, ? ,? )";
+            String sql = "UPDATE  voyage SET  date_debut = ?,date_fin = ?,lieu_depart = ? ,lieu_arrive= ? ";
             PreparedStatement pstmt = this.connect.prepareStatement(sql);
             pstmt.setObject(1, obj.getDatedebut());
             pstmt.setObject(2, obj.getDatefin());
             pstmt.setString(3, obj.getLieudepart());
             pstmt.setString(4, obj.getLieuarrive());
+            pstmt.setLong(5, obj.getNum_Voyage());
         
             pstmt.executeUpdate();
           //  conn.Close();
@@ -143,6 +143,16 @@ public class VoyageDAO extends DAO<Voyage> {
     }
     return passagers;
 }
+
+    @Override
+    public boolean delete(Voyage obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean update(Voyage obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     }
     
