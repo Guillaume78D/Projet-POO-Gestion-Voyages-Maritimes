@@ -26,8 +26,7 @@ public class BateauController {
     }
 
     //  Ajouter un bateau
-    public String ajouterBateau(String nom, int nbSieges, String classe,
-                                double vitesse, String capitaine) {
+    public String ajouterBateau(String nom, int nbSieges, String classe,double vitesse, String capitaine) {
 
         if (nom == null || nom.trim().isEmpty()) {
             return "Erreur : le nom du bateau est obligatoire.";
