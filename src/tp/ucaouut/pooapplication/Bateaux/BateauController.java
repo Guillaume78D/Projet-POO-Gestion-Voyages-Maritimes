@@ -20,12 +20,12 @@ public class BateauController {
         this.bateauxDAO = bateauxDAO;
     }
 
-    // 🔹 Récupérer tous les bateaux
+    //  Récupérer tous les bateaux
     public List<Bateau> getTousLesBateaux() {
         return bateauxDAO.findAll();
     }
 
-    // 🔹 Ajouter un bateau
+    //  Ajouter un bateau
     public String ajouterBateau(String nom, int nbSieges, String classe,
                                 double vitesse, String capitaine) {
 
@@ -52,7 +52,7 @@ public class BateauController {
         return succes ? "Bateau ajouté avec succès !" : "Erreur lors de l'ajout du bateau.";
     }
 
-    // 🔹 Supprimer un bateau
+    //  Supprimer un bateau
     public void supprimerBateau(int idBateau) {
         try {
             Bateau b = new Bateau();
@@ -74,7 +74,7 @@ public class BateauController {
         }
     }
 
-    // 🔹 Modifier un bateau
+    //  Modifier un bateau
     public boolean modifierBateau(int id, String nom, int nbSieges,
                                   String classe, double vitesse, String capitaine) {
 
@@ -93,7 +93,7 @@ public class BateauController {
         return bateauxDAO.update(b);
     }
 
-    // 🔹 Mise à jour avec message (comme VoyageController)
+    //  Mise à jour avec message 
     public void mettreAJourBateau(Bateau b) {
         boolean succes = bateauxDAO.update(b);
 
@@ -107,8 +107,9 @@ public class BateauController {
         }
     }
 
-    // 🔹 Bateaux disponibles à une date donnée
+    //  Bateaux disponibles à une date donnée
     public List<Bateau> getBateauxDisponibles(LocalDateTime date) {
         return bateauxDAO.findDisponibles(date);
     }
 }
+
