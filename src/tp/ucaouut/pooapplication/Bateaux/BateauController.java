@@ -4,6 +4,8 @@
  */
 package tp.ucaouut.pooapplication.Bateaux;
 
+import tp.ucaouut.pooapplication.View.AjouterBateau;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class BateauController {
 
-    private BateauxDAO bateauxDAO;
+   /* private BateauxDAO bateauxDAO;
 
     public BateauController(BateauxDAO bateauxDAO) {
         this.bateauxDAO = bateauxDAO;
@@ -72,6 +74,10 @@ public class BateauController {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+     public void initComponents(){
+       
+    }
+    
 
     //  Modifier un bateau
     public boolean modifierBateau(int id, String nom, int nbSieges,
@@ -106,9 +112,67 @@ public class BateauController {
         }
     }
 
+
     //  Bateaux disponibles à une date donnée
     public List<Bateau> getBateauxDisponibles(LocalDateTime date) {
         return bateauxDAO.findDisponibles(date);
+    }*/
+    private final Bateau model ;
+    private final AjouterBateau view; // L'interface de votre capture d'écran
+    private final BateauxDAO dao;
+    private final boolean estCreation;
+    private final ActionListener onSucess;
+
+    public BateauController(Bateau m, AjouterBateau  v, BateauxDAO d, boolean creation, ActionListener success) {
+        this.model = m;
+        this.view = v;
+        this.dao = d;
+        this.estCreation = creation;
+        this.onSucess = success;
+        remplirChamps();
+        
+    }
+
+    private void remplirChamps() {
+        if (!estCreation) {
+            view.getNombateau().setText(model.getNom());
+            view.getNbsieges().setValue(model.getNbSieges());
+            view.getVitessechamp().setValue(model.getVitesse());
+            view.getCapitainechamp().setText(model.getCapitaine());
+            if ("BUSINESS".equals(model.getClasse())) view.getBuscheck().setSelected(true);
+            else view.getEcocheck().setSelected(true);
+        }
+    }
+
+    public void initController() {
+        // C'est ici qu'on branche le bouton orange "ENREGISTRER" de votre photo
+        view.getBtnenregistrer().addActionListener(e -> enregistrer());
+    }
+
+    private void enregistrer() {
+        // 1. Mise à jour du modèle avec les données de la vue
+        model.setNom(view.getNombateau().getText());
+        model.setNbSieges((int) view.getNbsieges().getValue());
+        model.setVitesse((double) view.getVitessechamp().getValue());
+        model.setCapitaine(view.getCapitainechamp().getText());
+        model.setClasse(view.getBuscheck().isSelected() ? "BUSINESS" : "ECONOMIQUE");
+
+        // 2. Persistance via le DAO
+        boolean succes;
+        if (estCreation) {
+            succes = dao.create(model);
+        } else {
+            succes = dao.update(model);
+        }
+
+        // 3. Feedback et fermeture
+        if (succes) {
+            JOptionPane.showMessageDialog(view, "Enregistrement réussi !");
+            onSucess.actionPerformed(null); // Notifier le controller parent
+        //    view.dispose(); // Fermer la fenêtre
+        } else {
+            JOptionPane.showMessageDialog(view, "Erreur lors de l'enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
 
