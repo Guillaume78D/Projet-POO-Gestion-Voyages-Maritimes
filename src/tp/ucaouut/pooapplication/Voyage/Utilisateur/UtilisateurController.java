@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java
  */
 package tp.ucaouut.pooapplication.Voyage.Utilisateur;
-
-import java.util.List;
+import java.awt.event.ActionListener;
+import tp.ucaouut.pooapplication.View.EnregistrerClient;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class UtilisateurController {
 
-    private UtilisateurDAO utilisateurDAO;
+ /*   private UtilisateurDAO utilisateurDAO;
 
     public UtilisateurController(UtilisateurDAO utilisateurDAO) {
         this.utilisateurDAO = utilisateurDAO;
@@ -119,5 +120,84 @@ public class UtilisateurController {
         }
 
         return user;
+    }*/
+    
+    private final Utilisateur model;
+    private final EnregistrerClient view;
+    private final UtilisateurDAO dao;
+    private final boolean estCreation;
+    private final ActionListener onSuccess;
+
+    public UtilisateurController(Utilisateur m, EnregistrerClient v, UtilisateurDAO d, boolean creation, ActionListener success) {
+        this.model = m;
+        this.view = v;
+        this.dao = d;
+        this.estCreation = creation;
+        this.onSuccess = success;
+        
+        if (!estCreation) {
+            remplirChamps();
+        }
+    }
+
+    /**
+     * Remplit l'interface avec les données du modèle (mode modification)
+     */
+    private void remplirChamps() {
+        view.getNom().setText(model.getNom());
+        view.getPrenom().setText(model.getPrenom());
+        view.getEmail().setText(model.getMail());
+        view.getEmail().setText(model.getPassword());
+    }
+
+    public void initController() {
+        // Bouton ENREGISTRER
+        view.getBtnenregistrer().addActionListener(e -> enregistrer());
+
+        // Bouton ANNULER
+        view.getBtnannuler().addActionListener(e -> view.dispose());
+    }
+
+    private void enregistrer() {
+        // 1. Récupération et validation simple
+        String nom = view.getNom().getText().trim();
+        String prenoms = view.getPrenom().getText().trim();
+        String email = view.getEmail().getText().trim();
+        String password = new String(view.getPassword().getPassword());
+
+        if (nom.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(view, "Le nom et l'email sont obligatoires.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        
+        model.setNom(nom);
+        model.setPrenom(prenoms);
+        model.setMail(email);
+        model.setPassword(password);
+
+        
+        try {
+            boolean succes;
+            if (estCreation) {
+                succes = dao.create(model);
+            } else {
+                succes = dao.update(model);
+            }
+
+            if (succes) {
+                JOptionPane.showMessageDialog(view, "Client enregistré avec succès !");
+                if (onSuccess != null) {
+                    // Déclenche le rafraîchissement de la table parente
+                    onSuccess.actionPerformed(null);
+                }
+                view.dispose();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(view, "Erreur lors de l'enregistrement : " + ex.getMessage());
+        }
     }
 }
+
+
+

@@ -9,14 +9,17 @@ package tp.ucaouut.pooapplication.Voyage;
  * @author USER
  */
 
-
+import java.awt.event.ActionListener;
+import tp.ucaouut.pooapplication.View.AjouterVoyage;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class VoyageController {
-    private VoyageDAO voyageDAO;
+   /* private VoyageDAO voyageDAO;
 
     public VoyageController(VoyageDAO voyageDAO) {
         this.voyageDAO = voyageDAO;
@@ -92,6 +95,63 @@ public class VoyageController {
     // On pourrait ajouter une vérification ici, 
     // par exemple si la liste est vide, on peut logger l'information
     return passagers;
-}
+}*/
+    private final Voyage model;
+    private final AjouterVoyage view;
+    private final VoyageDAO dao;
+    private final boolean estCreation;
+    private final ActionListener onSuccess;
+
+    public VoyageController(Voyage m, AjouterVoyage v, VoyageDAO d, boolean creation, ActionListener success) {
+        this.model = m;
+        this.view = v;
+        this.dao = d;
+        this.estCreation = creation;
+        this.onSuccess = success;
+    }
+
+    public void initController() {
+        // Liaison du bouton ENREGISTRER de l'interface
+        view.getBtnenregistrer().addActionListener(e -> enregistrer());
+        
+        // Si vous avez un bouton annuler (non visible mais conseillé)
+        if (view.getBtnannuler() != null) {
+            view.getBtnannuler().addActionListener(e -> view.dispose());
+        }
+    }
+
+    private void enregistrer() {
+        try {
+            // 1. Récupération des données des ComboBox (Lieux)
+            model.setLieudepart(view.getDepart().getSelectedItem().toString());
+            model.setLieuarrive(view.getArrive().getSelectedItem().toString());
+
+            // 2. Récupération des dates des JSpinners
+            // Conversion Date (Spinner) -> LocalDateTime (Java 8+)
+            Date dateDep = (Date) view.getDatedep().getValue();
+            Date dateArr = (Date) view.getDatear().getValue();
+            
+            model.setDatedebut(dateDep.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+            model.setDatefin(dateArr.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+
+            // 3. Logique Métier simple : Vérification des dates
+            if (model.getDatedebut().isBefore(model.getDatefin())) {
+                JOptionPane.showMessageDialog(view, "La date d'arrivée ne peut pas être avant le départ.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // 4. Persistance
+            boolean succes = estCreation ? dao.create(model) : dao.update(model);
+
+            if (succes) {
+                JOptionPane.showMessageDialog(view, "Voyage enregistré avec succès !");
+                if (onSuccess != null) onSuccess.actionPerformed(null);
+                view.dispose();
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(view, "Erreur de saisie : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
 }
