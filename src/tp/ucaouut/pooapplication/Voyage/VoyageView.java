@@ -10,6 +10,7 @@ package tp.ucaouut.pooapplication.Voyage;
  */
 public class VoyageView {
    private String voyage;
+   private String lo;
     
 }
 
