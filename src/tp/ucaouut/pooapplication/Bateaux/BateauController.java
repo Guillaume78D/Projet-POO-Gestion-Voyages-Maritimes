@@ -193,5 +193,6 @@ public class BateauController {
         tableModel.addRow(ligne);
     }
       }
+      
 }
 

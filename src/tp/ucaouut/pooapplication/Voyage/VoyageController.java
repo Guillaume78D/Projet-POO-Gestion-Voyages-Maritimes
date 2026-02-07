@@ -11,11 +11,13 @@ package tp.ucaouut.pooapplication.Voyage;
 
 import java.awt.event.ActionListener;
 import tp.ucaouut.pooapplication.View.AjouterVoyage;
+import tp.ucaouut.pooapplication.Main;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tp.ucaouut.pooapplication.View.Menu;
@@ -120,6 +122,7 @@ public class VoyageController {
     public void initController() {
         // Liaison du bouton ENREGISTRER de l'interface
         view.getBtnenregistrer().addActionListener(e -> enregistrer());
+        menu.getAjoutclient().addActionListener(e -> afficherFormulaireAjout());
         
         // Si vous avez un bouton annuler (non visible mais conseillé)
         if (view.getBtnannuler() != null) {
@@ -128,9 +131,11 @@ public class VoyageController {
     }
 
     private void enregistrer() {
+       
         try {
+             System.out.println("Bouton cliqué !");
             // 1. Récupération des données des ComboBox (Lieux)
-            model.setLieudepart(view.getDepart().getSelectedItem().toString());
+            bat.setLieudepart(view.getDepart().getSelectedItem().toString());
             model.setLieuarrive(view.getArrive().getSelectedItem().toString());
 
             // 2. Récupération des dates des JSpinners
@@ -173,5 +178,19 @@ public class VoyageController {
         tableModel.addRow(ligne);
     }
 }
+    private void afficherFormulaireAjout() {
+    // 1. Créer la fenêtre (le cadre)
+    JFrame frameAjout = new JFrame("Enregistrer un nouveau voyage");
     
+    // 2. Créer ton panel
+    AjouterVoyage panAjout = new AjouterVoyage();
+    
+    // 3. Ajouter le panel à la fenêtre
+    frameAjout.setContentPane(panAjout);
+    
+    // 4. Configurer et afficher
+    frameAjout.pack();
+    frameAjout.setLocationRelativeTo(null); // Centrer sur l'écran
+    frameAjout.setVisible(true);
+}
 }
