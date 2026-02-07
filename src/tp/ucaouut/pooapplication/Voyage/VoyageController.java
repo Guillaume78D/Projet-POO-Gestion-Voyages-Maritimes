@@ -120,11 +120,11 @@ public class VoyageController {
 
     public void initController() {
         // Liaison du bouton ENREGISTRER de l'interface
-      view.getBtnenregistrer().addActionListener(e -> {
+      view.getBtnenregistrado().addActionListener(e -> {
         System.out.println("Clic sur enregistrer détecté !"); // Pour tester
         enregistrer(); 
     });
-        menu.getAjoutclient().addActionListener(e -> afficherFormulaireAjout());
+        menu.getAjoutvoyage().addActionListener(e -> afficherFormulaireAjout());
         
         // Si vous avez un bouton annuler (non visible mais conseillé)
         if (view.getBtnannuler() != null) {
@@ -132,7 +132,7 @@ public class VoyageController {
         }
     }
 
-    private void enregistrer() {
+    public void enregistrer() {
        
         try {
              

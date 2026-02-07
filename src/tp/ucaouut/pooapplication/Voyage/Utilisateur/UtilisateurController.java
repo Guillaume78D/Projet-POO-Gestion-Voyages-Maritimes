@@ -5,6 +5,7 @@
 package tp.ucaouut.pooapplication.Voyage.Utilisateur;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JFrame;
 import tp.ucaouut.pooapplication.View.EnregistrerClient;
 import tp.ucaouut.pooapplication.View.Menu;
 import javax.swing.JOptionPane;
@@ -129,15 +130,13 @@ public class UtilisateurController {
     private final EnregistrerClient view;
     private final UtilisateurDAO dao;
     private  final Menu menu;
-    private final boolean estCreation;
-    private final ActionListener onSuccess;
+    private final boolean estCreation = false;
+    private final ActionListener onSuccess = null;
 
-    public UtilisateurController(Utilisateur m, EnregistrerClient v, UtilisateurDAO d, boolean creation, ActionListener success, Menu menu) {
+    public UtilisateurController(Utilisateur m, EnregistrerClient v, UtilisateurDAO d, Menu menu) {
         this.model = m;
         this.view = v;
         this.dao = d;
-        this.estCreation = creation;
-        this.onSuccess = success;
         this.menu = menu;
         
         if (!estCreation) {
@@ -158,6 +157,7 @@ public class UtilisateurController {
     public void initController() {
         // Bouton ENREGISTRER
         view.getBtnenregistrer().addActionListener(e -> enregistrer());
+         menu.getAjoutClient().addActionListener(e -> afficherFormulaireAjout());
 
         // Bouton ANNULER
         view.getBtnannuler().addActionListener(e -> view.dispose());
@@ -220,6 +220,21 @@ public class UtilisateurController {
         Object[] ligne = {  c.getId(),c.getNom(), c.getPrenom(), c.getMail() };
         tableModel.addRow(ligne);
     }
+}
+    private void afficherFormulaireAjout() {
+    // 1. Créer la fenêtre (le cadre)
+    JFrame frameAjout = new JFrame("Enregistrer un nouveau Client");
+    
+    // 2. Créer ton panel
+    EnregistrerClient panAjout = new EnregistrerClient();
+    
+    // 3. Ajouter le panel à la fenêtre
+    frameAjout.setContentPane(panAjout);
+    
+    // 4. Configurer et afficher
+    frameAjout.pack();
+    frameAjout.setLocationRelativeTo(null); // Centrer sur l'écran
+    frameAjout.setVisible(true);
 }
 }
     

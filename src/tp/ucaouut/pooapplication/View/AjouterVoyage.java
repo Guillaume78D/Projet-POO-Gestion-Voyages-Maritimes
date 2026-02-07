@@ -27,7 +27,7 @@ public class AjouterVoyage extends javax.swing.JPanel {
         return arrive;
     }
 
-    public JButton getBtnenregistrer() {
+    public JButton getBtnenregistrado() {
         return btnenregistrer;
     }
 
@@ -178,6 +178,11 @@ public class AjouterVoyage extends javax.swing.JPanel {
         btnenregistrer.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnenregistrer.setForeground(new java.awt.Color(204, 51, 0));
         btnenregistrer.setText("ENREGISTRER");
+        btnenregistrer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnenregistrerActionPerformed(evt);
+            }
+        });
 
         depart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TOGO", "BENIN", "GHANA", "SENEGAL" }));
 
@@ -274,6 +279,10 @@ public class AjouterVoyage extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnenregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenregistrerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnenregistrerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
