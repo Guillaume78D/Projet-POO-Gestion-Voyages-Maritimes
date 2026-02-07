@@ -102,17 +102,19 @@ public class VoyageController {
     private final Voyage model;
     private final AjouterVoyage view;
     private final VoyageDAO dao;
-    private final Menu menu;
-    private final boolean estCreation;
-    private final ActionListener onSuccess;
+   private final Menu menu;
+    private final boolean estCreation = false;
+    private final ActionListener onSuccess = null;
 
-    public VoyageController(Voyage m, AjouterVoyage v, VoyageDAO d, boolean creation, ActionListener success, Menu menu) {
+   
+
+    public VoyageController(Voyage m, AjouterVoyage v, VoyageDAO d, Menu menu) {
         this.model = m;
         this.view = v;
         this.dao = d;
-        this.estCreation = creation;
-        this.onSuccess = success;
         this.menu = menu;
+       
+       
     }
 
     public void initController() {
@@ -151,7 +153,7 @@ public class VoyageController {
             if (succes) {
                 JOptionPane.showMessageDialog(view, "Voyage enregistré avec succès !");
                 if (onSuccess != null) onSuccess.actionPerformed(null);
-                refreshTable();
+               refreshTable();
                 view.dispose();
             }
 
@@ -159,7 +161,7 @@ public class VoyageController {
             JOptionPane.showMessageDialog(view, "Erreur de saisie : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
-     public void refreshTable() {
+    public void refreshTable() {
         
     // 1. On récupère le modèle du tableau depuis la vue
     DefaultTableModel tableModel = (DefaultTableModel) menu.getTableVoyages().getModel();  
