@@ -7,6 +7,8 @@ package tp.ucaouut.pooapplication.Voyage.Utilisateur;
 
 import java.sql.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import tp.ucaouut.pooapplication.DAO;
 
 /**
@@ -77,17 +79,43 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         
         if (rs.next()) {
             user.setId(rs.getInt("Id"));
-            user.setNom(rs.getString("Nom"));
-            user.setMail(rs.getString("Mail"));
-            user.setPassword(rs.getString("Password"));
-            user.setMail(rs.getString("Mail"));
+            user.setNom(rs.getString("nom"));
+            user.setNom(rs.getString("prenom"));
+            user.setMail(rs.getString("mail"));
+            user.setPassword(rs.getString("password"));
+          
         }return true;
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
     }
     }
+    public List<Utilisateur> findAll() {
+    List<Utilisateur> clients = new ArrayList<>();
+    String sql = "SELECT * FROM utilisateurs";
+     Utilisateur user = new Utilisateur();
+    
+    try ( 
+         PreparedStatement ps = this.connect.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        
+        while (rs.next()) {
+            user.setId(rs.getInt("Id"));
+           user.setNom( rs.getString("Nom"));
+            user.setPrenom(rs.getString("prenom"));
+            user.setMail(rs.getString("Mail"));
+          
+        }
+        
+       clients.add(user);
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return clients;
+}
     public Utilisateur login(String login, String password) {
+        
         try {
             
             String sql = "SELECT * FROM utilisateurs WHERE nom = ? AND password= ?";

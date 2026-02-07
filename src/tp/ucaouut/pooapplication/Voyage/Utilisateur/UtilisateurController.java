@@ -4,8 +4,11 @@
  */
 package tp.ucaouut.pooapplication.Voyage.Utilisateur;
 import java.awt.event.ActionListener;
+import java.util.List;
 import tp.ucaouut.pooapplication.View.EnregistrerClient;
+import tp.ucaouut.pooapplication.View.Menu;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -125,15 +128,17 @@ public class UtilisateurController {
     private final Utilisateur model;
     private final EnregistrerClient view;
     private final UtilisateurDAO dao;
+    private  final Menu menu;
     private final boolean estCreation;
     private final ActionListener onSuccess;
 
-    public UtilisateurController(Utilisateur m, EnregistrerClient v, UtilisateurDAO d, boolean creation, ActionListener success) {
+    public UtilisateurController(Utilisateur m, EnregistrerClient v, UtilisateurDAO d, boolean creation, ActionListener success, Menu menu) {
         this.model = m;
         this.view = v;
         this.dao = d;
         this.estCreation = creation;
         this.onSuccess = success;
+        this.menu = menu;
         
         if (!estCreation) {
             remplirChamps();
@@ -197,6 +202,24 @@ public class UtilisateurController {
             JOptionPane.showMessageDialog(view, "Erreur lors de l'enregistrement : " + ex.getMessage());
         }
     }
+    public void refreshTable() {
+        
+    // 1. On récupère le modèle du tableau depuis la vue
+    DefaultTableModel tableModel = (DefaultTableModel) menu.getTableClients().getModel();
+    
+    
+    tableModel.setRowCount(0); 
+
+  
+    List<Utilisateur> liste = dao.findAll(); 
+
+   
+    for (Utilisateur c : liste) {
+        
+        Object[] ligne = { c.getNom(), c.getPrenom(), c.getMail() };
+        tableModel.addRow(ligne);
+    }
+}
 }
 
 
