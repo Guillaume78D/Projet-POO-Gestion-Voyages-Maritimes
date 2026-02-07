@@ -11,7 +11,6 @@ package tp.ucaouut.pooapplication.Voyage;
 
 import java.awt.event.ActionListener;
 import tp.ucaouut.pooapplication.View.AjouterVoyage;
-import tp.ucaouut.pooapplication.Main;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -121,7 +120,10 @@ public class VoyageController {
 
     public void initController() {
         // Liaison du bouton ENREGISTRER de l'interface
-        view.getBtnenregistrer().addActionListener(e -> enregistrer());
+      view.getBtnenregistrer().addActionListener(e -> {
+        System.out.println("Clic sur enregistrer détecté !"); // Pour tester
+        enregistrer(); 
+    });
         menu.getAjoutclient().addActionListener(e -> afficherFormulaireAjout());
         
         // Si vous avez un bouton annuler (non visible mais conseillé)
@@ -133,9 +135,9 @@ public class VoyageController {
     private void enregistrer() {
        
         try {
-             System.out.println("Bouton cliqué !");
+             
             // 1. Récupération des données des ComboBox (Lieux)
-            bat.setLieudepart(view.getDepart().getSelectedItem().toString());
+            model.setLieudepart(view.getDepart().getSelectedItem().toString());
             model.setLieuarrive(view.getArrive().getSelectedItem().toString());
 
             // 2. Récupération des dates des JSpinners
@@ -159,7 +161,7 @@ public class VoyageController {
                 JOptionPane.showMessageDialog(view, "Voyage enregistré avec succès !");
                 if (onSuccess != null) onSuccess.actionPerformed(null);
                refreshTable();
-                view.dispose();
+                
             }
 
         } catch (Exception ex) {
