@@ -17,6 +17,9 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import tp.ucaouut.pooapplication.View.Menu;
+import tp.ucaouut.pooapplication.Voyage.Utilisateur.Utilisateur;
 
 public class VoyageController {
    /* private VoyageDAO voyageDAO;
@@ -99,15 +102,17 @@ public class VoyageController {
     private final Voyage model;
     private final AjouterVoyage view;
     private final VoyageDAO dao;
+    private final Menu menu;
     private final boolean estCreation;
     private final ActionListener onSuccess;
 
-    public VoyageController(Voyage m, AjouterVoyage v, VoyageDAO d, boolean creation, ActionListener success) {
+    public VoyageController(Voyage m, AjouterVoyage v, VoyageDAO d, boolean creation, ActionListener success, Menu menu) {
         this.model = m;
         this.view = v;
         this.dao = d;
         this.estCreation = creation;
         this.onSuccess = success;
+        this.menu = menu;
     }
 
     public void initController() {
@@ -146,6 +151,7 @@ public class VoyageController {
             if (succes) {
                 JOptionPane.showMessageDialog(view, "Voyage enregistré avec succès !");
                 if (onSuccess != null) onSuccess.actionPerformed(null);
+                refreshTable();
                 view.dispose();
             }
 
@@ -153,5 +159,17 @@ public class VoyageController {
             JOptionPane.showMessageDialog(view, "Erreur de saisie : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
+     public void refreshTable() {
+        
+    // 1. On récupère le modèle du tableau depuis la vue
+    DefaultTableModel tableModel = (DefaultTableModel) menu.getTableVoyages().getModel();  
+    tableModel.setRowCount(0); 
+    List<Voyage> liste = dao.findAll(); 
+
+    for (Voyage c : liste) {       
+        Object[] ligne = {  c.getNum_Voyage(),c.getNum_Voyage(), c.getDatedebut(), c.getDatefin(), c.getLieudepart(),c.getLieudepart() };
+        tableModel.addRow(ligne);
+    }
+}
     
 }

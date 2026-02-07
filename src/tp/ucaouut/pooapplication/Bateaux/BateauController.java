@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import tp.ucaouut.pooapplication.View.Menu;
+import tp.ucaouut.pooapplication.Voyage.Voyage;
 
 /**
  *
@@ -120,15 +123,17 @@ public class BateauController {
     private final Bateau model ;
     private final AjouterBateau view; // L'interface de votre capture d'écran
     private final BateauxDAO dao;
+    private final Menu menu;
     private final boolean estCreation;
     private final ActionListener onSucess;
 
-    public BateauController(Bateau m, AjouterBateau  v, BateauxDAO d, boolean creation, ActionListener success) {
+    public BateauController(Bateau m, AjouterBateau  v, BateauxDAO d, boolean creation, ActionListener success,Menu menu) {
         this.model = m;
         this.view = v;
         this.dao = d;
         this.estCreation = creation;
         this.onSucess = success;
+        this.menu = menu;
         remplirChamps();
         
     }
@@ -161,6 +166,7 @@ public class BateauController {
         boolean succes;
         if (estCreation) {
             succes = dao.create(model);
+            refreshTable();
         } else {
             succes = dao.update(model);
         }
@@ -174,5 +180,18 @@ public class BateauController {
             JOptionPane.showMessageDialog(view, "Erreur lors de l'enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+      public void refreshTable() {
+        
+    // 1. On récupère le modèle du tableau depuis la vue
+    DefaultTableModel tableModel = (DefaultTableModel) menu.getTableVoyages().getModel();  
+    tableModel.setRowCount(0); 
+    List<Bateau> liste = dao.findAll(); 
+
+    for (Bateau c : liste) {       
+        Object[] ligne = {  c.getIdBateau(),c.getNom(), c.getNbSieges(), c.getClasse(), c.getVitesse(), };
+        tableModel.addRow(ligne);
+    }
+      }
 }
 

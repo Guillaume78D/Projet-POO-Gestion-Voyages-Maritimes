@@ -196,6 +196,7 @@ public class UtilisateurController {
                     // Déclenche le rafraîchissement de la table parente
                     onSuccess.actionPerformed(null);
                 }
+                    refreshTable();
                 view.dispose();
             }
         } catch (Exception ex) {
@@ -216,11 +217,12 @@ public class UtilisateurController {
    
     for (Utilisateur c : liste) {
         
-        Object[] ligne = { c.getNom(), c.getPrenom(), c.getMail() };
+        Object[] ligne = {  c.getId(),c.getNom(), c.getPrenom(), c.getMail() };
         tableModel.addRow(ligne);
     }
 }
 }
-
+    
+  
 
 

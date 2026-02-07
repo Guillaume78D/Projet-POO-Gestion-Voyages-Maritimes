@@ -10,6 +10,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import tp.ucaouut.pooapplication.Voyage.Voyage;
 
 /**
  *
@@ -101,6 +102,28 @@ public class BateauxDAO extends DAO<Bateau> {
         return false;
    
     }
+     public List<Bateau> findAll() {
+    List<Bateau> liste = new ArrayList<>();
+    String sql = "SELECT * FROM voyage"; 
+    try {
+        PreparedStatement pstmt = this.connect.prepareStatement(sql); 
+        ResultSet rs = pstmt.executeQuery();
+        
+        while (rs.next()) {
+            Bateau v = new Bateau();
+            v.setIdBateau(rs.getInt("id_bateau")); 
+            v.setNom(rs.getString("nom")); 
+            v.setNbSieges(rs.getInt("nbsieges")); 
+            v.setClasse(rs.getString("classe"));
+             v.setVitesse(rs.getDouble("vitesse")); 
+
+            liste.add(v);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return liste;
+}
     
     public List<Bateau> findDisponibles(LocalDateTime dateT) {
     List<Bateau> liste = new ArrayList<>();
