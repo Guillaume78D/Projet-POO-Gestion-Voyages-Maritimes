@@ -1,25 +1,25 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package tp.ucaouut.pooapplication.View;
+package tp.ucaouut.pooapplication.View2;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 
 /**
  *
- * @author user
+ * @author USER
  */
-public class AjouterVoyage extends javax.swing.JPanel {
+public class Addvoyage extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Addvoyage.class.getName());
 
     /**
-     * Creates new form AjouterVoyage
+     * Creates new form Addvoyage
      */
-    public AjouterVoyage() {
+    public Addvoyage() {
         initComponents();
     }
 
@@ -27,20 +27,13 @@ public class AjouterVoyage extends javax.swing.JPanel {
         return arrive;
     }
 
-    public JButton getBtnenregistrer() {
+    public JButton getBtnannulervoyage() {
+        return btnannulervoyage;
+    }
+
+    public JButton getBtnvoyage() {
         return btnvoyage;
     }
-
-    public JButton getVoyage() {
-        return voyage;
-    }
-
-    public void setVoyage(JButton voyage) {
-        this.voyage = voyage;
-    }
-    
-
-    
 
     public JSpinner getDatear() {
         return datear;
@@ -54,47 +47,15 @@ public class AjouterVoyage extends javax.swing.JPanel {
         return depart;
     }
 
-    public JLabel getjLabel18() {
-        return jLabel18;
-    }
-
-    public JLabel getjLabel21() {
-        return jLabel21;
-    }
-
-    public JLabel getjLabel22() {
-        return jLabel22;
-    }
-
-    public JLabel getjLabel24() {
-        return jLabel24;
-    }
-
-    public void setBtnannuler(JButton btnannuler) {
-        this.btnannulervoyage = btnannuler;
-    }
-
-    public JButton getBtnannuler() {
-        return btnannulervoyage;
-    }
-
-    public JLabel getjLabel25() {
-        return jLabel25;
-    }
-
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
-
-    public JPanel getjPanel7() {
-        return jPanel7;
-    }
-
     public void setArrive(JComboBox<String> arrive) {
         this.arrive = arrive;
     }
 
-    public void setBtnenregistrer(JButton btnvoyage) {
+    public void setBtnannulervoyage(JButton btnannulervoyage) {
+        this.btnannulervoyage = btnannulervoyage;
+    }
+
+    public void setBtnvoyage(JButton btnvoyage) {
         this.btnvoyage = btnvoyage;
     }
 
@@ -110,35 +71,9 @@ public class AjouterVoyage extends javax.swing.JPanel {
         this.depart = depart;
     }
 
-    public void setjLabel18(JLabel jLabel18) {
-        this.jLabel18 = jLabel18;
-    }
+    
 
-    public void setjLabel21(JLabel jLabel21) {
-        this.jLabel21 = jLabel21;
-    }
-
-    public void setjLabel22(JLabel jLabel22) {
-        this.jLabel22 = jLabel22;
-    }
-
-    public void setjLabel24(JLabel jLabel24) {
-        this.jLabel24 = jLabel24;
-    }
-
-    public void setjLabel25(JLabel jLabel25) {
-        this.jLabel25 = jLabel25;
-    }
-
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
-
-    public void setjPanel7(JPanel jPanel7) {
-        this.jPanel7 = jPanel7;
-    }
-
- 
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -156,7 +91,8 @@ public class AjouterVoyage extends javax.swing.JPanel {
         datedep = new javax.swing.JSpinner();
         datear = new javax.swing.JSpinner();
         btnannulervoyage = new javax.swing.JButton();
-        voyage = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -168,7 +104,7 @@ public class AjouterVoyage extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabel18.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
@@ -208,8 +144,6 @@ public class AjouterVoyage extends javax.swing.JPanel {
         btnannulervoyage.setForeground(new java.awt.Color(204, 51, 0));
         btnannulervoyage.setText("ANNULER");
 
-        voyage.setText("Add");
-
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -218,9 +152,7 @@ public class AjouterVoyage extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(voyage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(117, 117, 117))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
@@ -228,7 +160,7 @@ public class AjouterVoyage extends javax.swing.JPanel {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(btnannulervoyage)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                                 .addComponent(btnvoyage))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -249,15 +181,9 @@ public class AjouterVoyage extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(voyage)
-                        .addGap(29, 29, 29)))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(depart, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -273,39 +199,55 @@ public class AjouterVoyage extends javax.swing.JPanel {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(datear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnannulervoyage)
                     .addComponent(btnvoyage))
                 .addGap(32, 32, 32))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 643, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnvoyageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvoyageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnvoyageActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new Addvoyage().setVisible(true));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> arrive;
@@ -321,10 +263,5 @@ public class AjouterVoyage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JButton voyage;
     // End of variables declaration//GEN-END:variables
-
-    public void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

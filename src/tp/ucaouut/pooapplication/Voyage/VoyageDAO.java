@@ -23,7 +23,7 @@ public class VoyageDAO extends DAO<Voyage> {
     }
 
     @Override
-    public boolean create(Voyage obj) {
+    public long create(Voyage obj) {
         try {
             String sql = "INSERT INTO voyage (date_debut,date_fin,lieu_depart,lieu_arrive) VALUES (?, ?, ? ,? )";
             PreparedStatement pstmt = this.connect.prepareStatement(sql);
@@ -31,14 +31,16 @@ public class VoyageDAO extends DAO<Voyage> {
             pstmt.setObject(2, obj.getDatefin());
             pstmt.setString(3, obj.getLieudepart());
             pstmt.setString(4, obj.getLieuarrive());
+            pstmt.setLong(5, obj.getNum_Voyage());
         
             pstmt.executeUpdate();
           //  conn.Close();
-            return true;
+            return obj.getNum_Voyage() ;
         } catch (SQLException e) { e.printStackTrace(); }
-              return false;
+        return 0;
+              
     }
-
+  
     public boolean delete(Long id) throws SQLException  {
         try {
             String sql = "DELETE FROM voyage  WHERE num_voyage = ?";

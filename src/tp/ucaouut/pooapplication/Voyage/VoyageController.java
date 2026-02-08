@@ -18,8 +18,11 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import tp.ucaouut.pooapplication.View.Menu;
+import tp.ucaouut.pooapplication.View2.Addvoyage;
+import tp.ucaouut.pooapplication.View2.EnregistrerVoyageController;
 import tp.ucaouut.pooapplication.Voyage.Utilisateur.Utilisateur;
 
 public class VoyageController {
@@ -101,15 +104,15 @@ public class VoyageController {
     return passagers;
 }*/
     private final Voyage model;
-    private final AjouterVoyage view;
+    private final Addvoyage view;
     private final VoyageDAO dao;
    private final Menu menu;
-    private final boolean estCreation = false;
+    private final boolean estCreation = true;
     private final ActionListener onSuccess = null;
 
    
 
-    public VoyageController(Voyage m, AjouterVoyage v, VoyageDAO d, Menu menu) {
+    public VoyageController(Voyage m, Addvoyage v, VoyageDAO d, Menu menu) {
         this.model = m;
         this.view = v;
         this.dao = d;
@@ -120,19 +123,16 @@ public class VoyageController {
 
     public void initController() {
         // Liaison du bouton ENREGISTRER de l'interface
-      view.getBtnenregistrado().addActionListener(e -> {
-        System.out.println("Clic sur enregistrer détecté !"); // Pour tester
-        enregistrer(); 
-    });
-        menu.getAjoutvoyage().addActionListener(e -> afficherFormulaireAjout());
+      view.getBtnvoyage().addActionListener(e ->nouveau());
+      //  menu.getAjoutvoyage().addActionListener(e -> afficherFormulaireAjout());
         
         // Si vous avez un bouton annuler (non visible mais conseillé)
-        if (view.getBtnannuler() != null) {
-            view.getBtnannuler().addActionListener(e -> view.dispose());
+      if (view.getBtnannulervoyage()!= null) {
+           view.getBtnannulervoyage().addActionListener(e -> view.dispose());
         }
     }
 
-    public void enregistrer() {
+  /*  public void enregistrer() {
        
         try {
              
@@ -149,13 +149,10 @@ public class VoyageController {
             model.setDatefin(dateArr.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
 
             // 3. Logique Métier simple : Vérification des dates
-            if (model.getDatedebut().isBefore(model.getDatefin())) {
-                JOptionPane.showMessageDialog(view, "La date d'arrivée ne peut pas être avant le départ.", "Erreur", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+          
 
             // 4. Persistance
-            boolean succes = estCreation ? dao.create(model) : dao.update(model);
+            boolean succes = dao.create(model) ;
 
             if (succes) {
                 JOptionPane.showMessageDialog(view, "Voyage enregistré avec succès !");
@@ -167,8 +164,26 @@ public class VoyageController {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(view, "Erreur de saisie : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
+    }*/
+    
+     private void nouveau() {
+        Addvoyage newView = new Addvoyage();
+        EnregistrerVoyageController controller = new   EnregistrerVoyageController(
+                new Voyage(), 
+                newView, 
+                dao, 
+                Boolean.TRUE, // Création
+                (e)-> {
+                    // Au succès de l'enregistrement -> ajout à la table
+                    SwingUtilities.invokeLater(() -> {
+                        DefaultTableModel tableModel = (DefaultTableModel) menu.getTableVoyages().getModel();
+                        tableModel.addRow(((EnregistrerVoyageController) e.getSource()).getModel().toTableRow());
+                    });
+                });
+        controller.initController();
+        newView.setVisible(true);
     }
-    public void refreshTable() {
+   public void refreshTable() {
         
     // 1. On récupère le modèle du tableau depuis la vue
     DefaultTableModel tableModel = (DefaultTableModel) menu.getTableVoyages().getModel();  
@@ -180,19 +195,8 @@ public class VoyageController {
         tableModel.addRow(ligne);
     }
 }
-    private void afficherFormulaireAjout() {
-    // 1. Créer la fenêtre (le cadre)
-    JFrame frameAjout = new JFrame("Enregistrer un nouveau voyage");
     
-    // 2. Créer ton panel
-    AjouterVoyage panAjout = new AjouterVoyage();
-    
-    // 3. Ajouter le panel à la fenêtre
-    frameAjout.setContentPane(panAjout);
-    
-    // 4. Configurer et afficher
-    frameAjout.pack();
-    frameAjout.setLocationRelativeTo(null); // Centrer sur l'écran
-    frameAjout.setVisible(true);
-}
+   
+
+   
 }

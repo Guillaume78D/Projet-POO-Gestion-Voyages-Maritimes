@@ -50,7 +50,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnannuler" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnannulerclient" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -99,7 +99,7 @@
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
-                          <Component id="btnenregistrer" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnenregistrerclient" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="303" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -132,13 +132,13 @@
                           <Component id="password" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
-                      <Component id="btnannuler" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnannulerclient" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="461" max="32767" attributes="0"/>
-                          <Component id="btnenregistrer" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnenregistrerclient" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -206,7 +206,7 @@
                 <Property name="text" type="java.lang.String" value="PASSWORD"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnannuler">
+            <Component class="javax.swing.JButton" name="btnannulerclient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Black" size="14" style="0"/>
@@ -217,10 +217,10 @@
                 <Property name="text" type="java.lang.String" value="ANNULER"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnannulerActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnannulerclientActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnenregistrer">
+            <Component class="javax.swing.JButton" name="btnenregistrerclient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Black" size="14" style="0"/>
@@ -231,7 +231,7 @@
                 <Property name="text" type="java.lang.String" value="ENREGISTRER"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnenregistrerActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnenregistrerclientActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="prenom">

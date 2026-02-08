@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @author USER
  */
 public class Voyage {
-    private int num_Voyage;
+    private Long num_Voyage;
     private LocalDateTime datedebut;
     private LocalDateTime datefin;
     private String lieudepart;
@@ -20,7 +20,7 @@ public class Voyage {
     public Voyage() {
     }
 
-    public Voyage(int num_Voyage, LocalDateTime datedebut, LocalDateTime datefin, String lieudepart, String lieuarrive) {
+    public Voyage(Long num_Voyage, LocalDateTime datedebut, LocalDateTime datefin, String lieudepart, String lieuarrive) {
         this.num_Voyage = num_Voyage;
         this.datedebut = datedebut;
         this.datefin = datefin;
@@ -30,7 +30,7 @@ public class Voyage {
 
     
 
-    public int getNum_Voyage() {
+    public Long getNum_Voyage() {
         return num_Voyage;
     }
 
@@ -46,7 +46,7 @@ public class Voyage {
         return lieuarrive;
     }
 
-    public void setNum_Voyage(int num_Voyage) {
+    public void setNum_Voyage(long num_Voyage) {
         this.num_Voyage = num_Voyage;
     }
 
@@ -69,5 +69,7 @@ public class Voyage {
     public void setLieudepart(String lieudepart) {
         this.lieudepart = lieudepart;
     }
-    
+     public Object[] toTableRow() {
+        return new Object[] {num_Voyage, datedebut, datefin, lieudepart, lieuarrive};
+    }
 }

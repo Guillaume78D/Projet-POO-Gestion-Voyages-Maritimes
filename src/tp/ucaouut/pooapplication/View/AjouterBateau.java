@@ -23,7 +23,7 @@ public class AjouterBateau extends javax.swing.JPanel {
     }
 
     public void setBtnenregistrer(JButton btnenregistrer) {
-        this.btnenregistrer = btnenregistrer;
+        this.btnenregistrerbateaux = btnenregistrer;
     }
 
     public void setBuscheck(JCheckBox buscheck) {
@@ -83,7 +83,7 @@ public class AjouterBateau extends javax.swing.JPanel {
     }
 
     public JButton getBtnenregistrer() {
-        return btnenregistrer;
+        return btnenregistrerbateaux;
     }
 
     public JCheckBox getBuscheck() {
@@ -155,7 +155,7 @@ public class AjouterBateau extends javax.swing.JPanel {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        btnenregistrer = new javax.swing.JButton();
+        btnenregistrerbateaux = new javax.swing.JButton();
         nombateau = new javax.swing.JTextField();
         capitainechamp = new javax.swing.JTextField();
         ecocheck = new javax.swing.JCheckBox();
@@ -195,12 +195,12 @@ public class AjouterBateau extends javax.swing.JPanel {
         jLabel31.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel31.setText("NB_SIÈGES");
 
-        btnenregistrer.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnenregistrer.setForeground(new java.awt.Color(204, 51, 0));
-        btnenregistrer.setText("ENREGISTRER");
-        btnenregistrer.addActionListener(new java.awt.event.ActionListener() {
+        btnenregistrerbateaux.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnenregistrerbateaux.setForeground(new java.awt.Color(204, 51, 0));
+        btnenregistrerbateaux.setText("ENREGISTRER");
+        btnenregistrerbateaux.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenregistrerActionPerformed(evt);
+                btnenregistrerbateauxActionPerformed(evt);
             }
         });
 
@@ -261,7 +261,7 @@ public class AjouterBateau extends javax.swing.JPanel {
                         .addGap(0, 62, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnenregistrer)
+                        .addComponent(btnenregistrerbateaux)
                         .addGap(182, 182, 182))))
         );
         jPanel8Layout.setVerticalGroup(
@@ -292,7 +292,7 @@ public class AjouterBateau extends javax.swing.JPanel {
                     .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(capitainechamp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnenregistrer)
+                .addComponent(btnenregistrerbateaux)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -318,9 +318,9 @@ public class AjouterBateau extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnenregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenregistrerActionPerformed
+    private void btnenregistrerbateauxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenregistrerbateauxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnenregistrerActionPerformed
+    }//GEN-LAST:event_btnenregistrerbateauxActionPerformed
 
     private void nombateauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombateauActionPerformed
         // TODO add your handling code here:
@@ -336,7 +336,7 @@ public class AjouterBateau extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnenregistrer;
+    private javax.swing.JButton btnenregistrerbateaux;
     private javax.swing.JCheckBox buscheck;
     private javax.swing.JTextField capitainechamp;
     private javax.swing.JCheckBox ecocheck;

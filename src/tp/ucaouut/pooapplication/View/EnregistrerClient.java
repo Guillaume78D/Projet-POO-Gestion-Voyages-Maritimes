@@ -25,11 +25,11 @@ public class EnregistrerClient extends javax.swing.JPanel {
     }
 
     public JButton getBtnannuler() {
-        return btnannuler;
+        return btnannulerclient;
     }
 
     public JButton getBtnenregistrer() {
-        return btnenregistrer;
+        return btnenregistrerclient;
     }
 
     public JTextField getEmail() {
@@ -81,11 +81,11 @@ public class EnregistrerClient extends javax.swing.JPanel {
     }
 
     public void setBtnannuler(JButton btnannuler) {
-        this.btnannuler = btnannuler;
+        this.btnannulerclient = btnannuler;
     }
 
     public void setBtnenregistrer(JButton btnenregistrer) {
-        this.btnenregistrer = btnenregistrer;
+        this.btnenregistrerclient = btnenregistrer;
     }
 
     public void setEmail(JTextField email) {
@@ -149,8 +149,8 @@ public class EnregistrerClient extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        btnannuler = new javax.swing.JButton();
-        btnenregistrer = new javax.swing.JButton();
+        btnannulerclient = new javax.swing.JButton();
+        btnenregistrerclient = new javax.swing.JButton();
         prenom = new javax.swing.JTextField();
         nom = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
@@ -184,21 +184,21 @@ public class EnregistrerClient extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel17.setText("PASSWORD");
 
-        btnannuler.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnannuler.setForeground(new java.awt.Color(204, 0, 51));
-        btnannuler.setText("ANNULER");
-        btnannuler.addActionListener(new java.awt.event.ActionListener() {
+        btnannulerclient.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnannulerclient.setForeground(new java.awt.Color(204, 0, 51));
+        btnannulerclient.setText("ANNULER");
+        btnannulerclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnannulerActionPerformed(evt);
+                btnannulerclientActionPerformed(evt);
             }
         });
 
-        btnenregistrer.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnenregistrer.setForeground(new java.awt.Color(204, 0, 51));
-        btnenregistrer.setText("ENREGISTRER");
-        btnenregistrer.addActionListener(new java.awt.event.ActionListener() {
+        btnenregistrerclient.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnenregistrerclient.setForeground(new java.awt.Color(204, 0, 51));
+        btnenregistrerclient.setText("ENREGISTRER");
+        btnenregistrerclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenregistrerActionPerformed(evt);
+                btnenregistrerclientActionPerformed(evt);
             }
         });
 
@@ -213,7 +213,7 @@ public class EnregistrerClient extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnannuler)
+                        .addComponent(btnannulerclient)
                         .addGap(59, 59, 59))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +246,7 @@ public class EnregistrerClient extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(201, 201, 201)
-                    .addComponent(btnenregistrer)
+                    .addComponent(btnenregistrerclient)
                     .addContainerGap(303, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
@@ -272,12 +272,12 @@ public class EnregistrerClient extends javax.swing.JPanel {
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(btnannuler)
+                .addComponent(btnannulerclient)
                 .addGap(24, 24, 24))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                     .addContainerGap(461, Short.MAX_VALUE)
-                    .addComponent(btnenregistrer)
+                    .addComponent(btnenregistrerclient)
                     .addGap(22, 22, 22)))
         );
 
@@ -297,18 +297,18 @@ public class EnregistrerClient extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnenregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenregistrerActionPerformed
+    private void btnenregistrerclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenregistrerclientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnenregistrerActionPerformed
+    }//GEN-LAST:event_btnenregistrerclientActionPerformed
 
-    private void btnannulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnannulerActionPerformed
+    private void btnannulerclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnannulerclientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnannulerActionPerformed
+    }//GEN-LAST:event_btnannulerclientActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnannuler;
-    private javax.swing.JButton btnenregistrer;
+    private javax.swing.JButton btnannulerclient;
+    private javax.swing.JButton btnenregistrerclient;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

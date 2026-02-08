@@ -12,6 +12,7 @@ import tp.ucaouut.pooapplication.Voyage.VoyageDAO;
 import tp.ucaouut.pooapplication.ConnexionDB;
 import tp.ucaouut.pooapplication.View.AjouterBateau;
 import tp.ucaouut.pooapplication.View.Menu;
+import tp.ucaouut.pooapplication.View2.Addvoyage;
 
 /**
  *
@@ -26,7 +27,7 @@ public class Main {
                 // 1. On crée les objets du MVC
                 Voyage model = new Voyage();
                Menu view = new Menu();
-               AjouterVoyage bat = new  AjouterVoyage();
+               Addvoyage bat = new  Addvoyage();
                Connection conn = (Connection) ConnexionDB.getInstance();
                 VoyageDAO dao = new VoyageDAO(conn);
                 
@@ -36,7 +37,8 @@ public class Main {
                 // 3. On initialise les boutons et on affiche la fenêtre
                 controller.initController();
            //     view.setLocationRelativeTo(null); // Centre la fenêtre
-                view.setVisible(true);
+              view.setVisible(true);
+             bat.setVisible(true);
                 
             } catch (Exception e) {
                 e.printStackTrace();
